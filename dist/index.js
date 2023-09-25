@@ -36886,7 +36886,6 @@ async function run() {
     const { context } = github;
     const { repository } = context.payload;
     const workflowRunId = context.payload.workflow_run.id;
-
     core.info(`Checking workflow_run id ${workflowRunId}`);
 
     const workflowRun = await octokit.actions.getWorkflowRun({
@@ -36894,9 +36893,10 @@ async function run() {
       repo: repository.name,
       run_id: workflowRunId,
     });
+    core.info(`Workflow response, ${JSON.stringify(workflowRun)}`);
 
     const result = { "pr-number": workflowRun.data?.pull_requests[0]?.number };
-    core.info(`Result ${result}`)
+    core.info(`Result ${JSON.stringify(esult)}`);
     return result;
   } catch (error) {
     core.setFailed(error.message);
