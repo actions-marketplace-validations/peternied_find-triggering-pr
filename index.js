@@ -12,7 +12,7 @@ async function run() {
 
     core.info(`Checking workflow_run id ${workflowRunId}`);
 
-    const workflowRun = await github.rest.actions.getWorkflowRun({
+    const workflowRun = await octokit.actions.getWorkflowRun({
       owner: repository.owner.login,
       repo: repository.name,
       run_id: workflowRunId,
