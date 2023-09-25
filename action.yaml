@@ -1,0 +1,16 @@
+name: "Find Triggering Pull Request"
+
+description: "Finds the pull request associated with a triggered event."
+
+inputs:
+  token:
+    description: "GitHub token used for authentication"
+    required: true
+
+outputs:
+  pr-number:
+    description: "The pull request number, if found, otherwise undefined"
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
