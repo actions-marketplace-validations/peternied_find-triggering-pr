@@ -36895,9 +36895,8 @@ async function run() {
     });
     core.info(`Workflow response, ${JSON.stringify(workflowRun)}`);
 
-    const result = { "pr-number": workflowRun.data?.pull_requests[0]?.number };
-    core.info(`Result ${JSON.stringify(result)}`);
-    return result;
+    const prNumber = workflowRun.data?.pull_requests[0]?.number;
+    core.setOutput('pr-number', prNumber);
   } catch (error) {
     core.setFailed(error.message);
   }
